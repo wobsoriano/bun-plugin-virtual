@@ -19,10 +19,10 @@ export default function virtual(options: VirtualOptions): import('bun').BunPlugi
       onLoad(
         { filter: /.*/, namespace },
         (args) => {
-          const contents = moduleMap.get(args.path)!;
+          const contents = moduleMap.get(args.path);
 
-          if (typeof contents === 'string') {
-            return { contents, loader: 'js' }
+          if (!contents) {
+            throw new Error(`Could not find virtual module ${args.path}`);
           }
 
           return { contents, loader: 'js' }
