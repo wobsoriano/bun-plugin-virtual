@@ -25,7 +25,7 @@ export default function virtual(options: VirtualOptions): import('bun').BunPlugi
             return { contents, loader: 'js' }
           }
 
-          return { contents: generateNamedExports(contents), loader: 'js' }
+          return { contents, loader: 'js' }
         },
       );
     }
